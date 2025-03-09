@@ -11,7 +11,8 @@ namespace SpendSmart.Models
 
         public string? Description { get; set; } //"?" is to make it NULLable
 
-        public string? Category { get; set; } //"?" is to make it NULLable
+        [Required(ErrorMessage = "You have to select a category.")]
+        public ExpenseCategory Category { get; set; }  // Enum type for categories
 
         public ExpenseStatus Status { get; set; } = ExpenseStatus.Pending; //default value 
 
@@ -23,5 +24,17 @@ namespace SpendSmart.Models
         Pending, //which is the default value (0)
         Approved,
         Rejected
+    }
+
+    public enum ExpenseCategory
+    {
+        Shopping,
+        Essentials,
+        Health,
+        Entertainment,
+        Bank,
+        Communication,
+        Investment,
+        Other
     }
 }

@@ -2,7 +2,45 @@
     ViewData["Title"] = "Expenses";
 }
 
+@model List<Expense>
+
 <div class="text-center">
     <h1 class="display-4">Expenses</h1>
-    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Home</a>
+    <a asp-controller="Home" asp-action="CreateEditExpense" class="btn btn-primary mt-2">Create New</a>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary mt-2">Home</a>
+    <br />
+    <table class="table mt-2">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Value</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>   
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var expense in Model)
+                {
+                    <tr>
+                        <td>@expense.Id</td>
+                        <td>@expense.Value</td>
+                        <td>@expense.Description</td>
+                        <td>@expense.Category</td>
+                        <td>@expense.Status</td>
+                        <td>@expense.Date</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" class="text-center text-muted">No expenses found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

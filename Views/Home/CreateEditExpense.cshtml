@@ -6,21 +6,36 @@
 
 <div class="text-center">
     <h1 class="display-4">Create or edit an expense</h1>
-    <a asp-controller="Home" asp-action="Index" class="btn btn-seconday">Home</a>
 </div>
 
-<form>
+<form asp-action="CreateEditExpenseForm" asp-controller="Home">
     <label>Id</label>
     <input class="form-control" type="number" placeholder="0" asp-for="Id"/>
-    <label>Value</label>
+    <label class="mt-4">Value $</label>
     <input class="form-control" type="number" placeholder="0" asp-for="Value"/>
-    <label>Description</label>
-    <input class="form-control" type="text" asp-for="Description" />
-    <label>Category</label>
-    <input class="form-control" type="text" asp-for="Category" />
-    <label>Status</label>
-    <input class="form-control" type="text" asp-for="Status" />
-    <label>Date</label>
+    <label class ="mt-4">Description</label>
+    <input class="form-control" type="text" placeholder="Add a Description" asp-for="Description" />
+    <label class="mt-4">Category</label>
+    <select class="form-control" asp-for="Category">
+        <option value="Shopping">Shopping</option>
+        <option value="Essentials">Essentials</option>
+        <option value="Health">Health</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Bank">Bank</option>
+        <option value="Communication">Communication</option>
+        <option value="Investment">Investment</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <label class="mt-4 ">Status</label>
+    <select class="form-control" asp-for="Status">
+        <option value="Pending">Pending</option>
+        <option value="Approved">Approved</option>
+        <option value="Rejected">Rejected</option>
+    </select>
+    <label class="mt-4">Date</label>
     <input class="form-control" type="date" placeholder="date" asp-for="Date" />
-    <a class="btn btn-primary">Add</a>
+    <button class="btn btn-primary mt-4" type="submit">Add</button>
+    <a asp-controller="Home" asp-action="Expenses" class="btn btn-outline-primary mt-4">Overview</a>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary mt-4">Home</a>
 </form>
